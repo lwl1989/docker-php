@@ -58,12 +58,12 @@ RUN yum clean all && \
     --with-http_realip_module \
     --without-mail_pop3_module \
     --without-mail_imap_module \
-    --with-http_gzip_static_module && \
-    make && make install && \
+    --with-http_gzip_static_module \
+    && make && make install \
 
 #Make install php
-    cd /usr/local/src/php-$PHP_VERSION && \
-    ./configure --prefix=/usr/local/php \
+    && cd /usr/local/src/php-$PHP_VERSION \
+    && ./configure --prefix=/usr/local/php \
     --with-config-file-path=/usr/local/php/etc \
     --with-config-file-scan-dir=/usr/local/php/etc/php.d \
     --with-fpm-user=www \
@@ -105,18 +105,18 @@ RUN yum clean all && \
     --enable-ipv6 \
     --disable-debug \
     --disable-phar \
-    --without-pear && \
-    make && make install && \
+    --without-pear \
+    && make && make install \
 
 #Install php-fpm
-    cd /usr/local/src/php-$PHP_VERSION && \
-    cp php.ini-production /usr/local/php/etc/php.ini && \
-    cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf && \
-    cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf && \
-    cp -R ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && chmod +x /etc/init.d/php-fpm && \
+    && cd /usr/local/src/php-$PHP_VERSION \
+    && cp php.ini-production /usr/local/php/etc/php.ini \
+    && cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf \
+    && cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf \
+    && cp -R ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && chmod +x /etc/init.d/php-fpm \
 
 #Config php.ini
-    sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
+    && sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
     && sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /usr/local/php/etc/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /usr/local/php/etc/php.ini \
     && sed -i 's/;date.timezone =/date.timezone = PRC/g' /usr/local/php/etc/php.ini \
@@ -125,36 +125,36 @@ RUN yum clean all && \
     && sed -i 's/\[opcache\]/[opcache]\nzend_extension=opcache.so/g' /usr/local/php/etc/php.ini \
     && sed -i 's/;opcache.enable=1/opcache.enable=1/g' /usr/local/php/etc/php.ini \
     && sed -i 's/;opcache.enable_cli=1/opcache.enable_cli=1/g' /usr/local/php/etc/php.ini \
-    && sed -i 's/;opcache.fast_shutdown=0/opcache.fast_shutdown=1/g' /usr/local/php/etc/php.ini && \  
+    && sed -i 's/;opcache.fast_shutdown=0/opcache.fast_shutdown=1/g' /usr/local/php/etc/php.ini \  
 
 #Install PHPRedis
-    cd /usr/local/src/redis-3.1.2 \
+    && cd /usr/local/src/redis-3.1.2 \
     && /usr/local/php/bin/phpize \
     && ./configure --with-php-config=/usr/local/php/bin/php-config \
     && make && make install \
-    && sed -i 's/; Windows Extensions/extension=redis.so\n; Windows Extensions/g' /usr/local/php/etc/php.ini && \
+    && sed -i 's/; Windows Extensions/extension=redis.so\n; Windows Extensions/g' /usr/local/php/etc/php.ini \
 #Install Apcu
-	cd /usr/local/src \
-	&& git clone https://github.com/krakjoe/apcu.git
+	&& cd /usr/local/src \
+	&& git clone https://github.com/krakjoe/apcu.git \
 	&& cd apcu \
 	&& /usr/local/php/bin/phpize \
 	&& ./configure --with-php-config=/usr/local/php/bin/php-config \
 	&& make && make install \
 #Install MongoDb
-	cd /usr/local/src \
+	&& cd /usr/local/src \
 	&& git clone https://github.com/mongodb/mongo-php-driver.git \
-	cd mongo-php-driver \
+	&& cd mongo-php-driver \
 	&& git submodule sync && git submodule update --init \
 	&& /usr/local/php/bin/phpize \
 	&& ./configure --with-php-config=/usr/local/php/bin/php-config \
 	&& make && make install \
 
 #Install swoole    
-    curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v$SWOOLE_VERSION | gunzip | tar x -C /usr/local/src \
+    && curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v$SWOOLE_VERSION | gunzip | tar x -C /usr/local/src \
     && cd /usr/local/src/swoole-src-$SWOOLE_VERSION \
     && /usr/local/php/bin/phpize \
     && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install \
-    && sed -i 's/extension=redis.so/extension=redis.so\nextension=swoole.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini && \
+    && sed -i 's/extension=redis.so/extension=redis.so\nextension=swoole.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini \
 
 #Install Redis server
 #    cd /usr/local/src/redis-$REDIS_VERSION \
@@ -165,26 +165,26 @@ RUN yum clean all && \
 	
 
 #Clean OS
-    yum remove -y gcc \
+    && yum remove -y gcc \
     gcc-c++ \
     autoconf \
     automake \
     libtool \
     make \
-    cmake && \
-    yum clean all && \
-    rm -rf /tmp/* /var/cache/{yum,ldconfig} /etc/my.cnf{,.d} && \
-    mkdir -p --mode=0755 /var/cache/{yum,ldconfig} && \
-    find /var/log -type f -delete && \
-    rm -rf /usr/local/src/* && \
+    cmake \
+    && yum clean all \
+    && rm -rf /tmp/* /var/cache/{yum,ldconfig} /etc/my.cnf{,.d} \
+    && mkdir -p --mode=0755 /var/cache/{yum,ldconfig} \
+    && find /var/log -type f -delete \
+    && rm -rf /usr/local/src/* \
 
 #Change Mod from webdir
-    chown -R www:www /data/www
+    && chown -R www:www /www
 
 #Create web folder
-VOLUME ["/data/www"]
+VOLUME ["/www"]
 
-ADD index.php /data/www/
+ADD index.php /www/
 
 #Update nginx config
 ADD nginx.conf /usr/local/nginx/conf/
@@ -194,7 +194,8 @@ ADD start.sh /start.sh
 RUN chmod 755 /start.sh
 
 #Set port
-EXPOSE 22 80 443 6379
+EXPOSE 22 80 443
+#6379
 
 #Start it
 #ENTRYPOINT ["/start.sh"]
