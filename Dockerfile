@@ -3,10 +3,9 @@ FROM frostsky/centos-sshd:7.3
 #作者信息
 MAINTAINER freshLi(13352019331@163.com)
 #环境变量
-ENV TENGINE_VERSION 2.2.0
 ENV PHP_VERSION 7.1.5
 ENV REDIS_VERSION 3.2.9
-ENV SWOOLE_VERSION 1.9.12
+#ENV SWOOLE_VERSION 1.9.12
 
 #安装编译工具
 RUN yum clean all && \
@@ -36,23 +35,26 @@ RUN yum clean all && \
     libjpeg-devel \
     freetype-devel \
     libmcrypt-devel \    
-    python-setuptools && \
+    python-setuptools \
+    imageMagkck \
+    imageMagkck-devel && \
 
 #Add user
-    mkdir -p /data/www && \
-    useradd -r -s /sbin/nologin -d /data/www -m -k no www && \
+    mkdir -p /www && \
+    useradd -r -s /sbin/nologin -d /www -m -k no www && \
 
 #Download tengine & php & redis & phpredis
     cd /usr/local/src/ && \
-    curl -Lk http://tengine.taobao.org/download/tengine-$TENGINE_VERSION.tar.gz | gunzip | tar x -C /usr/local/src && \
+    curl -Lk http://nginx.org/download/nginx-1.12.1.tar.gz | gunzip | tar x -C /usr/local/src && \
     curl -Lk http://php.net/distributions/php-$PHP_VERSION.tar.gz | gunzip | tar x -C /usr/local/src && \
     curl -Lk http://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz | gunzip | tar x -C /usr/local/src && \
-    curl -Lk https://pecl.php.net/get/redis-3.1.2.tgz | gunzip | tar x -C /usr/local/src && \
+    curl -Lk http://pecl.php.net/get/redis-3.1.2.tgz | gunzip | tar x -C /usr/local/src && \
+    curl -Lk http://pecl.php.net/get/imagick-3.4.3.tgz | gunzip | tar x -C /usr/local/src && \
 
 #Install tengine
-    cd /usr/local/src/tengine-$TENGINE_VERSION && \
+    cd /usr/local/src/nginx-1.12.1 && \
     ./configure --prefix=/usr/local/nginx \
-    --user=www --group=www \     
+    --user=www --group=www \     #
     --with-pcre \
     --with-http_ssl_module \
     --with-http_realip_module \
@@ -119,8 +121,8 @@ RUN yum clean all && \
     && sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
     && sed -i 's/post_max_size = 8M/post_max_size = 64M/g' /usr/local/php/etc/php.ini \
     && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 64M/g' /usr/local/php/etc/php.ini \
-    && sed -i 's/;date.timezone =/date.timezone = PRC/g' /usr/local/php/etc/php.ini \
-    && sed -i 's#;error_log = syslog#error_log = /data/www/devlog/php_error.log#' /usr/local/php/etc/php.ini \
+    && sed -i 's/;date.timezone =/date.timezone = UTC/g' /usr/local/php/etc/php.ini \
+    && sed -i 's#;error_log = syslog#error_log = /www/devlog/php_error.log#' /usr/local/php/etc/php.ini \
     && sed -i 's/max_execution_time = 30/max_execution_time = 120/g' /usr/local/php/etc/php.ini \
     && sed -i 's/\[opcache\]/[opcache]\nzend_extension=opcache.so/g' /usr/local/php/etc/php.ini \
     && sed -i 's/;opcache.enable=1/opcache.enable=1/g' /usr/local/php/etc/php.ini \
@@ -148,21 +150,18 @@ RUN yum clean all && \
 	&& /usr/local/php/bin/phpize \
 	&& ./configure --with-php-config=/usr/local/php/bin/php-config \
 	&& make && make install \
-
-#Install swoole    
-    && curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v$SWOOLE_VERSION | gunzip | tar x -C /usr/local/src \
-    && cd /usr/local/src/swoole-src-$SWOOLE_VERSION \
+#Install imagick
+    && cd /usr/local/src/imagick-3.4.3 \
     && /usr/local/php/bin/phpize \
-    && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install \
-    && sed -i 's/extension=redis.so/extension=redis.so\nextension=swoole.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini \
-
-#Install Redis server
-#    cd /usr/local/src/redis-$REDIS_VERSION \
-#    && make && make install PREFIX=/usr/local/redis \
-#    && cp redis.conf /usr/local/redis/ \
-#    && sed 's/^daemonize no/daemonize yes/' -i /usr/local/redis/redis.conf \
-#    && sed 's/^bind 127.0.0.1/bind 0.0.0.0/' -i /usr/local/redis/redis.conf && \  
-	
+    && ./configure --with-php-config=/usr/local/php/bin/php-config \
+    && make && make install \
+#Install swoole    
+#    && curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v$SWOOLE_VERSION | gunzip | tar x -C /usr/local/src \
+#    && cd /usr/local/src/swoole-src-$SWOOLE_VERSION \
+#    && /usr/local/php/bin/phpize \
+#    && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install \
+#   extension=swoole.so\n
+    && sed -i 's/extension=redis.so/extension=redis.so\nextension=imagick.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini \
 
 #Clean OS
     && yum remove -y gcc \
