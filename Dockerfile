@@ -54,7 +54,7 @@ RUN yum clean all && \
 #Install tengine
     cd /usr/local/src/nginx-1.12.1 && \
     ./configure --prefix=/usr/local/nginx \
-    --user=www --group=www \     #
+    --user=www --group=www \
     --with-pcre \
     --with-http_ssl_module \
     --with-http_realip_module \
