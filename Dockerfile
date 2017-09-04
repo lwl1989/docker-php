@@ -36,8 +36,8 @@ RUN yum clean all && \
     freetype-devel \
     libmcrypt-devel \    
     python-setuptools \
-    imageMagkck \
-    imageMagkck-devel && \
+    ImageMagick \
+    ImageMagick-devel && \
 
 #Add user
     mkdir -p /www && \
