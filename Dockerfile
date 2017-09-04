@@ -42,6 +42,8 @@ RUN yum clean all && \
 #Add user
     mkdir -p /www && \
     useradd -r -s /sbin/nologin -d /www -m -k no www && \
+    mkdir -p /opt/font && \
+    chown www:www /opt/font && \
 
 #Download tengine & php & redis & phpredis
     cd /usr/local/src/ && \
@@ -187,6 +189,8 @@ ADD index.php /www/
 
 #Update nginx config
 ADD nginx.conf /usr/local/nginx/conf/
+
+ADD NotoSansCJKtc-Medium.otf /opt/font/
 
 #Start
 ADD start.sh /start.sh
