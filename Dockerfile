@@ -40,10 +40,19 @@ RUN yum clean all && \
     ImageMagick-devel && \
 
 #Add user
-    mkdir -p /www && \
+    mkdir -p /www/devlog && \
+    touch /www/devlog/nginx_error.log && \
+    touch /www/devlog/access.log && \
+    touch /www/devlog/php_error.log && \
+    #project dir
+    mkdir -p /www/project/module/trunk && \
+    mkdir /www/global && \
+    mkdir /www/composer && \
+    mkdir /www/framework && \
+
     useradd -r -s /sbin/nologin -d /www -m -k no www && \
     mkdir -p /opt/font && \
-    chown www:www /opt/font && \
+    chown www:www /opt/font -R && \
 
 #Download tengine & php & redis & phpredis
     cd /usr/local/src/ && \
@@ -205,3 +214,7 @@ EXPOSE 22 80 443
 
 #Start web server
 CMD ["/start.sh"]
+
+
+#run command
+#docker run -p 9999:80 -v /www/smart/app/global:/www/global -v /www/smart/app/composer:/www/composer -v /www/smart/app/framework:/www/framework -v /www/smart/app/project/manager/trunk:/www/project/module/trunk --name t1 lwl/iloc:0.0.2
