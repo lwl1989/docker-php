@@ -128,7 +128,7 @@ RUN yum clean all && \
     && cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf \
     && cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf \
     && cp -R ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && chmod +x /etc/init.d/php-fpm \
-    && sed -i 's/listen = 127.0.0.1:9000/;listen = 127.0.0.1:9000\nlisten = /www/run/fpm.sock' \
+    && sed -i 's/listen = 127.0.0.1:9000/;listen = 127.0.0.1:9000\nlisten = /www/run/fpm.sock/g' /usr/local/php/etc/php-fpm.d/www.conf \
 
 #Config php.ini
     && sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
