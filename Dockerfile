@@ -3,9 +3,8 @@ FROM frostsky/centos-sshd:7.3
 #作者信息
 MAINTAINER freshLi(13352019331@163.com)
 #环境变量
-ENV PHP_VERSION 7.1.5
+ENV PHP_VERSION 7.1.9
 ENV REDIS_VERSION 3.2.9
-#ENV SWOOLE_VERSION 1.9.12
 
 #安装编译工具
 RUN yum clean all && \
@@ -40,6 +39,7 @@ RUN yum clean all && \
     ImageMagick-devel && \
 
 #Add user
+    mkdir -p /www/run && \
     mkdir -p /www/devlog && \
     touch /www/devlog/nginx_error.log && \
     touch /www/devlog/access.log && \
@@ -52,6 +52,7 @@ RUN yum clean all && \
 
     useradd -r -s /sbin/nologin -d /www -m -k no www && \
     mkdir -p /opt/font && \
+    chown www:www /www -R && \
     chown www:www /opt/font -R && \
 
 #Download tengine & php & redis & phpredis
@@ -117,7 +118,7 @@ RUN yum clean all && \
     --disable-rpath \
     --enable-ipv6 \
     --disable-debug \
-    --disable-phar \
+    --enable-phar \
     --without-pear \
     && make && make install \
 
@@ -127,6 +128,7 @@ RUN yum clean all && \
     && cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf \
     && cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf \
     && cp -R ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && chmod +x /etc/init.d/php-fpm \
+    && sed -i 's/listen = 127.0.0.1:9000/;listen = 127.0.0.1:9000\nlisten = /www/run/fpm.sock' \
 
 #Config php.ini
     && sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
