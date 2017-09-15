@@ -10,4 +10,4 @@
 # start nginx (not daemon)
 echo "start nginx"
 /usr/local/nginx/sbin/nginx
-echo "ok" && tail -f /var/log/nginx/error.log
+#echo "ok" && tail -f /var/log/nginx/error.log
