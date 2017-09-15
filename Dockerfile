@@ -129,6 +129,10 @@ RUN yum clean all && \
     && cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf \
     && cp -R ./sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && chmod +x /etc/init.d/php-fpm \
     && sed -i 's/listen = 127.0.0.1:9000/;listen = 127.0.0.1:9000\nlisten = \/www\/run\/fpm.sock/g' /usr/local/php/etc/php-fpm.d/www.conf \
+    && sed -i 's/;listen.owner = www/listen.owner = www/g' /usr/local/php/etc/php-fpm.d/www.conf \
+    && sed -i 's/;listen.group = www/listen.group = www/g' /usr/local/php/etc/php-fpm.d/www.conf \
+    && sed -i 's/;listen.mode = 0660/listen.mode = 0660/g' /usr/local/php/etc/php-fpm.d/www.conf \
+
 
 #Config php.ini
     && sed -i 's#; extension_dir = \"\.\/\"#extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303"#' /usr/local/php/etc/php.ini \
@@ -215,7 +219,7 @@ EXPOSE 22 80 443
 #ENTRYPOINT ["/start.sh"]
 
 #Start web server
-CMD ["/start.sh"]
+#CMD ["/start.sh"]
 
 
 #run command
