@@ -118,8 +118,8 @@ RUN yum clean all && \
     --disable-rpath \
     --enable-ipv6 \
     --disable-debug \
-    --enable-phar \
-    --without-pear \
+    --enable-phar 
+    
     && make && make install \
 
 #Install php-fpm
