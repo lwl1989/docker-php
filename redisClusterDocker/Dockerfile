@@ -34,10 +34,11 @@ RUN curl -Lk http://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz | gun
     make PREFIX=/usr/local/redis install && \
     cp /usr/local/src/redis-$REDIS_VERSION/src/redis-trib.rb /usr/local/redis/bin/redis-trib && \
     cp /usr/local/src/redis-$REDIS_VERSION/redis.conf /redis/conf/redis.conf && \
+    sed -i 's/protected-mode yes/protected-mode no/g' /redis/conf/redis.conf && \
     sed -i 's/# cluster-enabled yes/cluster-enabled yes/g' /redis/conf/redis.conf && \
-    sed -i 's/#daemonize no/daemonize yes/g' /redis/conf/redis.conf && \
+#    sed -i 's/#daemonize no/daemonize yes/g' /redis/conf/redis.conf && \
     sed -i 's/pidfile \/var\/run\/redis.pid/\/redis\/run\/redis.pid/g' /redis/conf/redis.conf && \
-    sed -i 's/logfile ""/\/redis\/log\/redis.log/g' /redis/conf/redis.conf && \
+    sed -i 's/logfile ""/logfile \/redis\/log\/redis.log/g' /redis/conf/redis.conf && \
     ln -s /usr/local/redis/bin/redis-trib /usr/bin/redis-trib && \
     ln -s /usr/local/redis/bin/redis-server /usr/bin/redis-server && \
     chown www:www /redis -R
