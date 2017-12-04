@@ -46,7 +46,7 @@ RUN curl -Lk http://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz | gun
 ADD start.sh /start.sh
 RUN chmod 755 /start.sh
 
-EXPOSE 22 6379 16379
+#EXPOSE 22 6379 16379
 
 
 
