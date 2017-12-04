@@ -39,6 +39,7 @@ RUN curl -Lk http://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz | gun
 #    sed -i 's/#daemonize no/daemonize yes/g' /redis/conf/redis.conf && \
     sed -i 's/pidfile \/var\/run\/redis.pid/\/redis\/run\/redis.pid/g' /redis/conf/redis.conf && \
     sed -i 's/logfile ""/logfile \/redis\/log\/redis.log/g' /redis/conf/redis.conf && \
+    sed -i 's/127\.0\.0\.1/0\.0\.0\.0/g' /redis/conf/redis.conf && \
     ln -s /usr/local/redis/bin/redis-trib /usr/bin/redis-trib && \
     ln -s /usr/local/redis/bin/redis-server /usr/bin/redis-server && \
     chown www:www /redis -R
