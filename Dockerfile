@@ -5,6 +5,7 @@ MAINTAINER freshLi(13352019331@163.com)
 #环境变量
 ENV PHP_VERSION 7.1.9
 ENV REDIS_VERSION 3.2.9
+ENV SWOOLE_VERSION 1.9.22
 
 #安装编译工具
 RUN yum clean all && \
@@ -38,17 +39,13 @@ RUN yum clean all && \
     ImageMagick \
     ImageMagick-devel && \
 
-#Add user
+    ###touch mkdir 
     mkdir -p /www/run && \
-    mkdir -p /www/devlog && \
+    mkdir /www/devlog && \
+    mkdir /www/nginx && \   
     touch /www/devlog/nginx_error.log && \
     touch /www/devlog/access.log && \
     touch /www/devlog/php_error.log && \
-    #project dir
-    mkdir -p /www/project/module/trunk && \
-    mkdir /www/global && \
-    mkdir /www/composer && \
-    mkdir /www/framework && \
 
     useradd -r -s /sbin/nologin -d /www -m -k no www && \
     mkdir -p /opt/font && \
@@ -63,7 +60,7 @@ RUN yum clean all && \
     curl -Lk http://pecl.php.net/get/redis-3.1.2.tgz | gunzip | tar x -C /usr/local/src && \
     curl -Lk http://pecl.php.net/get/imagick-3.4.3.tgz | gunzip | tar x -C /usr/local/src && \
 
-#Install tengine
+#Install ng
     cd /usr/local/src/nginx-1.12.1 && \
     ./configure --prefix=/usr/local/nginx \
     --user=www --group=www \
@@ -117,8 +114,8 @@ RUN yum clean all && \
     --enable-fileinfo \
     --disable-rpath \
     --enable-ipv6 \
-    --disable-debug \
-    --enable-phar 
+    --enable-debug \
+    --enable-phar \
     
     && make && make install \
 
@@ -173,12 +170,11 @@ RUN yum clean all && \
     && ./configure --with-php-config=/usr/local/php/bin/php-config \
     && make && make install \
 #Install swoole    
-#    && curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v$SWOOLE_VERSION | gunzip | tar x -C /usr/local/src \
-#    && cd /usr/local/src/swoole-src-$SWOOLE_VERSION \
-#    && /usr/local/php/bin/phpize \
-#    && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install \
-#   extension=swoole.so\n
-    && sed -i 's/extension=redis.so/extension=redis.so\nextension=imagick.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini \
+    && curl -Lk https://codeload.github.com/swoole/swoole-src/tar.gz/v1.9.22 | gunzip | tar x -C /usr/local/src \
+    && cd /usr/local/src/swoole-src-1.9.22 \
+    && /usr/local/php/bin/phpize \
+    && ./configure --with-php-config=/usr/local/php/bin/php-config && make && make install \
+    && sed -i 's/extension=redis.so/extension=redis.so\nextension=imagick.so\nextension=swoole.so\nextension=mongodb.so\nextension=apcu.so\napc.enable_cli=1/g' /usr/local/php/etc/php.ini \
 
 #Clean OS
     && yum remove -y gcc \
@@ -213,14 +209,3 @@ RUN chmod 755 /start.sh
 
 #Set port
 EXPOSE 22 80 443
-#6379
-
-#Start it
-#ENTRYPOINT ["/start.sh"]
-
-#Start web server
-#CMD ["/start.sh"]
-
-
-#run command
-#docker run -p 9999:80 -v /www/smart/app/global:/www/global -v /www/smart/app/composer:/www/composer -v /www/smart/app/framework:/www/framework -v /www/smart/app/project/manager/trunk:/www/project/module/trunk --name t1 lwl/iloc:0.0.2
