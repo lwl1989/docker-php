@@ -894,3 +894,8 @@
 2017-12-05T12:04:16.456+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Connecting to 127.0.0.1:27019
 2017-12-05T12:04:16.458+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Successfully connected to 127.0.0.1:27019, took 2ms (3 connections now open to 127.0.0.1:27019)
 2017-12-05T12:05:16.458+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Ending idle connection to host 127.0.0.1:27019 because the pool meets constraints; 2 connections to that host remain open
+2017-12-05T12:07:41.003+0000 E STORAGE  [ftdc] WiredTiger error (2) [1512475661:3290][82:0x7f4e2880e700], WT_SESSION.open_cursor: /data/27018/data/collection-4--7643916534799828215.wt: file-size: stat: No such file or directory
+2017-12-05T12:07:41.004+0000 W FTDC     [ftdc] Uncaught exception in 'CursorNotFound: unable to open cursor at URI statistics:table:collection-4--7643916534799828215. reason: No such file or directory' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-12-05T12:07:46.779+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475666:779476][82:0x7f4e2e019700], log-server: /data/27018/data/journal: directory-list: opendir: No such file or directory
+2017-12-05T12:07:46.780+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475666:780038][82:0x7f4e2e019700], log-server: log pre-alloc server error: No such file or directory
+2017-12-05T12:07:46.780+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475666:780524][82:0x7f4e2e019700], log-server: log server error: No such file or directory

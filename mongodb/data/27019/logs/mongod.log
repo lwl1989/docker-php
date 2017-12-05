@@ -18632,3 +18632,8 @@
 2017-12-05T12:05:01.463+0000 I NETWORK  [conn11] received client metadata from 127.0.0.1:46024 conn11: { driver: { name: "NetworkInterfaceASIO-RS", version: "3.4.10" }, os: { type: "Linux", name: "CentOS Linux release 7.4.1708 (Core) ", architecture: "x86_64", version: "Kernel 4.9.49-moby" } }
 2017-12-05T12:05:16.458+0000 I -        [conn6] end connection 127.0.0.1:46010 (8 connections now open)
 2017-12-05T12:06:01.464+0000 I -        [conn7] end connection 127.0.0.1:46012 (7 connections now open)
+2017-12-05T12:07:50.430+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475670:430727][8:0x7fd28e73b700], log-server: /data/27019/data/journal: directory-list: opendir: No such file or directory
+2017-12-05T12:07:50.431+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475670:431246][8:0x7fd28e73b700], log-server: log pre-alloc server error: No such file or directory
+2017-12-05T12:07:50.431+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475670:431625][8:0x7fd28e73b700], log-server: log server error: No such file or directory
+2017-12-05T12:07:51.004+0000 E STORAGE  [ftdc] WiredTiger error (2) [1512475671:4286][8:0x7fd288f30700], WT_SESSION.open_cursor: /data/27019/data/collection-12--8875549458155101485.wt: file-size: stat: No such file or directory
+2017-12-05T12:07:51.006+0000 W FTDC     [ftdc] Uncaught exception in 'CursorNotFound: unable to open cursor at URI statistics:table:collection-12--8875549458155101485. reason: No such file or directory' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
