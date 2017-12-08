@@ -18637,3 +18637,124 @@
 2017-12-05T12:07:50.431+0000 E STORAGE  [thread2] WiredTiger error (2) [1512475670:431625][8:0x7fd28e73b700], log-server: log server error: No such file or directory
 2017-12-05T12:07:51.004+0000 E STORAGE  [ftdc] WiredTiger error (2) [1512475671:4286][8:0x7fd288f30700], WT_SESSION.open_cursor: /data/27019/data/collection-12--8875549458155101485.wt: file-size: stat: No such file or directory
 2017-12-05T12:07:51.006+0000 W FTDC     [ftdc] Uncaught exception in 'CursorNotFound: unable to open cursor at URI statistics:table:collection-12--8875549458155101485. reason: No such file or directory' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-12-05T12:09:31.487+0000 I NETWORK  [thread1] connection accepted from 127.0.0.1:46026 #12 (7 connections now open)
+2017-12-05T12:09:31.489+0000 I NETWORK  [conn12] received client metadata from 127.0.0.1:46026 conn12: { driver: { name: "NetworkInterfaceASIO-RS", version: "3.4.10" }, os: { type: "Linux", name: "CentOS Linux release 7.4.1708 (Core) ", architecture: "x86_64", version: "Kernel 4.9.49-moby" } }
+2017-12-05T12:10:31.489+0000 I -        [conn11] end connection 127.0.0.1:46024 (7 connections now open)
+2017-12-05T12:11:22.630+0000 I REPL     [ReplicationExecutor] can't see a majority of the set, relinquishing primary
+2017-12-05T12:11:22.650+0000 I REPL     [ReplicationExecutor] Stepping down from primary in response to heartbeat
+2017-12-05T16:09:59.026+0000 I REPL     [replExecDBWorker-2] transition to SECONDARY
+2017-12-05T16:09:59.026+0000 I COMMAND  [conn10] command local.oplog.rs command: getMore { getMore: 16333089423, collection: "oplog.rs", maxTimeMS: 5000, term: 2, lastKnownCommittedOpTime: { ts: Timestamp 1512475851000|1, t: 2 } } originatingCommand: { find: "oplog.rs", filter: { ts: { $gte: Timestamp 1512474043000|1 } }, tailable: true, oplogReplay: true, awaitData: true, maxTimeMS: 60000, term: 2, readConcern: { afterOpTime: { ts: Timestamp 1512474043000|1, t: 1 } } } planSummary: COLLSCAN cursorid:16333089423 keysExamined:0 docsExamined:0 numYields:1 nreturned:0 reslen:451 locks:{ Global: { acquireCount: { r: 6 } }, Database: { acquireCount: { r: 3 } }, oplog: { acquireCount: { r: 3 } } } protocol:op_command 14347532ms
+2017-12-05T16:09:59.043+0000 I -        [conn2] end connection 127.0.0.1:45952 (6 connections now open)
+2017-12-05T16:09:59.038+0000 I NETWORK  [replExecDBWorker-2] legacy transport layer closing all connections
+2017-12-05T16:09:59.047+0000 I NETWORK  [replExecDBWorker-2] Skip closing connection for connection # 12
+2017-12-05T16:09:59.048+0000 I NETWORK  [replExecDBWorker-2] Skip closing connection for connection # 10
+2017-12-05T16:09:59.048+0000 I NETWORK  [replExecDBWorker-2] Skip closing connection for connection # 9
+2017-12-05T16:09:59.049+0000 I NETWORK  [replExecDBWorker-2] Skip closing connection for connection # 8
+2017-12-05T16:09:59.049+0000 I NETWORK  [replExecDBWorker-2] Skip closing connection for connection # 4
+2017-12-05T16:09:59.049+0000 I NETWORK  [thread1] connection accepted from 127.0.0.1:46030 #13 (6 connections now open)
+2017-12-05T16:09:59.055+0000 I REPL     [ReplicationExecutor] Member 127.0.0.1:27020 is now in state SECONDARY
+2017-12-05T16:09:59.057+0000 I COMMAND  [conn8] command local.oplog.rs command: getMore { getMore: 13060373415, collection: "oplog.rs", maxTimeMS: 5000, term: 2, lastKnownCommittedOpTime: { ts: Timestamp 1512475851000|1, t: 2 } } originatingCommand: { find: "oplog.rs", filter: { ts: { $gte: Timestamp 1512474043000|1 } }, tailable: true, oplogReplay: true, awaitData: true, maxTimeMS: 60000, term: 2, readConcern: { afterOpTime: { ts: Timestamp 1512474043000|1, t: 1 } } } planSummary: COLLSCAN cursorid:13060373415 keysExamined:0 docsExamined:0 numYields:0 nreturned:0 reslen:451 locks:{ Global: { acquireCount: { r: 4 } }, Database: { acquireCount: { r: 2 } }, oplog: { acquireCount: { r: 2 } } } protocol:op_command 14347564ms
+2017-12-05T16:09:59.060+0000 I NETWORK  [thread1] connection accepted from 127.0.0.1:46032 #14 (7 connections now open)
+2017-12-05T16:09:59.065+0000 I REPL     [ReplicationExecutor] Member 127.0.0.1:27018 is now in state SECONDARY
+2017-12-05T16:09:59.071+0000 I NETWORK  [conn14] received client metadata from 127.0.0.1:46032 conn14: { driver: { name: "NetworkInterfaceASIO-Replication", version: "3.4.10" }, os: { type: "Linux", name: "CentOS Linux release 7.4.1708 (Core) ", architecture: "x86_64", version: "Kernel 4.9.49-moby" } }
+2017-12-05T16:09:59.073+0000 I NETWORK  [conn13] received client metadata from 127.0.0.1:46030 conn13: { driver: { name: "NetworkInterfaceASIO-Replication", version: "3.4.10" }, os: { type: "Linux", name: "CentOS Linux release 7.4.1708 (Core) ", architecture: "x86_64", version: "Kernel 4.9.49-moby" } }
+2017-12-05T16:10:09.220+0000 I -        [conn13] end connection 127.0.0.1:46030 (7 connections now open)
+2017-12-05T16:10:14.055+0000 I REPL     [ReplicationExecutor] Member 127.0.0.1:27020 is now in state PRIMARY
+2017-12-05T16:10:14.923+0000 I REPL     [rsBackgroundSync] sync source candidate: 127.0.0.1:27020
+2017-12-05T16:10:14.935+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Connecting to 127.0.0.1:27020
+2017-12-05T16:10:14.938+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Successfully connected to 127.0.0.1:27020, took 5ms (1 connections now open to 127.0.0.1:27020)
+2017-12-05T16:10:14.940+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Connecting to 127.0.0.1:27020
+2017-12-05T16:10:14.942+0000 I ASIO     [NetworkInterfaceASIO-RS-0] Successfully connected to 127.0.0.1:27020, took 2ms (2 connections now open to 127.0.0.1:27020)
+2017-12-05T16:10:59.073+0000 I -        [conn10] end connection 127.0.0.1:46022 (6 connections now open)
+2017-12-05T16:10:59.101+0000 I -        [conn12] end connection 127.0.0.1:46026 (5 connections now open)
+2017-12-05T16:14:59.103+0000 I -        [conn9] end connection 127.0.0.1:46020 (4 connections now open)
+2017-12-05T16:15:04.088+0000 I -        [conn8] end connection 127.0.0.1:46014 (3 connections now open)
+2017-12-05T17:08:59.966+0000 E STORAGE  [thread3] WiredTiger error (2) [1512493739:966280][8:0x7fd28b735700], file:WiredTiger.wt, WT_SESSION.checkpoint: /data/27019/data/WiredTiger.turtle.set: handle-open: open: No such file or directory
+2017-12-05T17:08:59.966+0000 E STORAGE  [thread3] WiredTiger error (2) [1512493739:966703][8:0x7fd28b735700], checkpoint-server: checkpoint server error: No such file or directory
+2017-12-05T17:08:59.967+0000 E STORAGE  [thread3] WiredTiger error (-31804) [1512493739:967065][8:0x7fd28b735700], checkpoint-server: the process must exit and restart: WT_PANIC: WiredTiger library panic
+2017-12-05T17:08:59.967+0000 I -        [thread3] Fatal Assertion 28558 at src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp 361
+2017-12-05T17:08:59.967+0000 I -        [thread3] 
+
+***aborting after fassert() failure
+
+
+2017-12-05T17:08:59.975+0000 I -        [WTJournalFlusher] Fatal Assertion 28559 at src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp 64
+2017-12-05T17:08:59.975+0000 I -        [WTJournalFlusher] 
+
+***aborting after fassert() failure
+
+
+2017-12-05T17:08:59.991+0000 F -        [thread3] Got signal: 6 (Aborted).
+
+ 0x561291dbb6b1 0x561291dba8c9 0x561291dbadad 0x7fd2921495e0 0x7fd291dac1f7 0x7fd291dad8e8 0x56129105f267 0x561291acbcb6 0x561291069576 0x561291069792 0x5612910699f4 0x561292716523 0x7fd292141e25 0x7fd291e6f34d
+----- BEGIN BACKTRACE -----
+{"backtrace":[{"b":"561290843000","o":"15786B1","s":"_ZN5mongo15printStackTraceERSo"},{"b":"561290843000","o":"15778C9"},{"b":"561290843000","o":"1577DAD"},{"b":"7FD29213A000","o":"F5E0"},{"b":"7FD291D77000","o":"351F7","s":"gsignal"},{"b":"7FD291D77000","o":"368E8","s":"abort"},{"b":"561290843000","o":"81C267","s":"_ZN5mongo32fassertFailedNoTraceWithLocationEiPKcj"},{"b":"561290843000","o":"1288CB6"},{"b":"561290843000","o":"826576","s":"__wt_eventv"},{"b":"561290843000","o":"826792","s":"__wt_err"},{"b":"561290843000","o":"8269F4","s":"__wt_panic"},{"b":"561290843000","o":"1ED3523"},{"b":"7FD29213A000","o":"7E25"},{"b":"7FD291D77000","o":"F834D","s":"clone"}],"processInfo":{ "mongodbVersion" : "3.4.10", "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", "compiledModules" : [], "uname" : { "sysname" : "Linux", "release" : "4.9.49-moby", "version" : "#1 SMP Wed Sep 27 23:17:17 UTC 2017", "machine" : "x86_64" }, "somap" : [ { "b" : "561290843000", "elfType" : 3, "buildId" : "94C7FAB092E567C9338D13DB9B68751363D15EFD" }, { "b" : "7FFC3A990000", "elfType" : 3, "buildId" : "375FB6AE43B475F3C3EB96076E53443ACF14EF51" }, { "b" : "7FD2930DB000", "path" : "/lib64/libssl.so.10", "elfType" : 3, "buildId" : "ED0AC7DEB91A242C194B3DEF27A215F41CE43116" }, { "b" : "7FD292C7A000", "path" : "/lib64/libcrypto.so.10", "elfType" : 3, "buildId" : "BC0AE9CA0705BEC1F0C0375AAD839843BB219CB1" }, { "b" : "7FD292A72000", "path" : "/lib64/librt.so.1", "elfType" : 3, "buildId" : "5B629F64AC6EA7AAC602BE56ED834BB6398C72AC" }, { "b" : "7FD29286E000", "path" : "/lib64/libdl.so.2", "elfType" : 3, "buildId" : "8CC796BA7CA23193AD753D8625018B61264724BE" }, { "b" : "7FD29256C000", "path" : "/lib64/libm.so.6", "elfType" : 3, "buildId" : "5FAABA77B1848347CEC4B0CE7B31811D7D00D2FA" }, { "b" : "7FD292356000", "path" : "/lib64/libgcc_s.so.1", "elfType" : 3, "buildId" : "361D73E3AA2ACE6AF32B03D1B74A22E1FF68AB2D" }, { "b" : "7FD29213A000", "path" : "/lib64/libpthread.so.0", "elfType" : 3, "buildId" : "B8FBCA68CA56E79556BF7884DACF89504096ADEB" }, { "b" : "7FD291D77000", "path" : "/lib64/libc.so.6", "elfType" : 3, "buildId" : "C3F28802314AF4EE866BF8D2E1B506B7BBF34CF6" }, { "b" : "7FD29334D000", "path" : "/lib64/ld-linux-x86-64.so.2", "elfType" : 3, "buildId" : "962B8EEE329A2C57184AF2780756ED2035DEAAC0" }, { "b" : "7FD291B2A000", "path" : "/lib64/libgssapi_krb5.so.2", "elfType" : 3, "buildId" : "DA322D74F55A0C4293085371A8D0E94B5962F5E7" }, { "b" : "7FD291842000", "path" : "/lib64/libkrb5.so.3", "elfType" : 3, "buildId" : "B69E63024D408E400401EEA6815317BDA38FB7C2" }, { "b" : "7FD29163E000", "path" : "/lib64/libcom_err.so.2", "elfType" : 3, "buildId" : "A3832734347DCA522438308C9F08F45524C65C9B" }, { "b" : "7FD29140B000", "path" : "/lib64/libk5crypto.so.3", "elfType" : 3, "buildId" : "A48639BF901DB554479BFAD114CB354CF63D7D6E" }, { "b" : "7FD2911F5000", "path" : "/lib64/libz.so.1", "elfType" : 3, "buildId" : "EA8E45DC8E395CC5E26890470112D97A1F1E0B65" }, { "b" : "7FD290FE7000", "path" : "/lib64/libkrb5support.so.0", "elfType" : 3, "buildId" : "6FDF5B013FD2739D304CFB9D723DCBC149EE03C9" }, { "b" : "7FD290DE3000", "path" : "/lib64/libkeyutils.so.1", "elfType" : 3, "buildId" : "2E01D5AC08C1280D013AAB96B292AC58BC30A263" }, { "b" : "7FD290BC9000", "path" : "/lib64/libresolv.so.2", "elfType" : 3, "buildId" : "FF4E72F4E574E143330FB3C66DB51613B0EC65EA" }, { "b" : "7FD2909A2000", "path" : "/lib64/libselinux.so.1", "elfType" : 3, "buildId" : "A88379F56A51950A33198890D37F5F8AEE71F8B4" }, { "b" : "7FD290740000", "path" : "/lib64/libpcre.so.1", "elfType" : 3, "buildId" : "9CA3D11F018BEEB719CDB34BE800BF1641350D0A" } ] }}
+ mongod(_ZN5mongo15printStackTraceERSo+0x41) [0x561291dbb6b1]
+ mongod(+0x15778C9) [0x561291dba8c9]
+ mongod(+0x1577DAD) [0x561291dbadad]
+ libpthread.so.0(+0xF5E0) [0x7fd2921495e0]
+ libc.so.6(gsignal+0x37) [0x7fd291dac1f7]
+ libc.so.6(abort+0x148) [0x7fd291dad8e8]
+ mongod(_ZN5mongo32fassertFailedNoTraceWithLocationEiPKcj+0x0) [0x56129105f267]
+ mongod(+0x1288CB6) [0x561291acbcb6]
+ mongod(__wt_eventv+0x3D7) [0x561291069576]
+ mongod(__wt_err+0x9D) [0x561291069792]
+ mongod(__wt_panic+0x2E) [0x5612910699f4]
+ mongod(+0x1ED3523) [0x561292716523]
+ libpthread.so.0(+0x7E25) [0x7fd292141e25]
+ libc.so.6(clone+0x6D) [0x7fd291e6f34d]
+-----  END BACKTRACE  -----
+2017-12-05T17:08:59.998+0000 F -        [WTJournalFlusher] Got signal: 6 (Aborted).
+
+ 0x561291dbb6b1 0x561291dba8c9 0x561291dbadad 0x7fd2921495e0 0x7fd291dac1f7 0x7fd291dad8e8 0x56129105f267 0x561291acc3c6 0x561291ac68a4 0x561291ab1efc 0x561291d2d5a1 0x561292832d40 0x7fd292141e25 0x7fd291e6f34d
+----- BEGIN BACKTRACE -----
+{"backtrace":[{"b":"561290843000","o":"15786B1","s":"_ZN5mongo15printStackTraceERSo"},{"b":"561290843000","o":"15778C9"},{"b":"561290843000","o":"1577DAD"},{"b":"7FD29213A000","o":"F5E0"},{"b":"7FD291D77000","o":"351F7","s":"gsignal"},{"b":"7FD291D77000","o":"368E8","s":"abort"},{"b":"561290843000","o":"81C267","s":"_ZN5mongo32fassertFailedNoTraceWithLocationEiPKcj"},{"b":"561290843000","o":"12893C6","s":"_ZN5mongo17wtRCToStatus_slowEiPKc"},{"b":"561290843000","o":"12838A4","s":"_ZN5mongo22WiredTigerSessionCache16waitUntilDurableEb"},{"b":"561290843000","o":"126EEFC","s":"_ZN5mongo18WiredTigerKVEngine24WiredTigerJournalFlusher3runEv"},{"b":"561290843000","o":"14EA5A1","s":"_ZN5mongo13BackgroundJob7jobBodyEv"},{"b":"561290843000","o":"1FEFD40"},{"b":"7FD29213A000","o":"7E25"},{"b":"7FD291D77000","o":"F834D","s":"clone"}],"processInfo":{ "mongodbVersion" : "3.4.10", "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", "compiledModules" : [], "uname" : { "sysname" : "Linux", "release" : "4.9.49-moby", "version" : "#1 SMP Wed Sep 27 23:17:17 UTC 2017", "machine" : "x86_64" }, "somap" : [ { "b" : "561290843000", "elfType" : 3, "buildId" : "94C7FAB092E567C9338D13DB9B68751363D15EFD" }, { "b" : "7FFC3A990000", "elfType" : 3, "buildId" : "375FB6AE43B475F3C3EB96076E53443ACF14EF51" }, { "b" : "7FD2930DB000", "path" : "/lib64/libssl.so.10", "elfType" : 3, "buildId" : "ED0AC7DEB91A242C194B3DEF27A215F41CE43116" }, { "b" : "7FD292C7A000", "path" : "/lib64/libcrypto.so.10", "elfType" : 3, "buildId" : "BC0AE9CA0705BEC1F0C0375AAD839843BB219CB1" }, { "b" : "7FD292A72000", "path" : "/lib64/librt.so.1", "elfType" : 3, "buildId" : "5B629F64AC6EA7AAC602BE56ED834BB6398C72AC" }, { "b" : "7FD29286E000", "path" : "/lib64/libdl.so.2", "elfType" : 3, "buildId" : "8CC796BA7CA23193AD753D8625018B61264724BE" }, { "b" : "7FD29256C000", "path" : "/lib64/libm.so.6", "elfType" : 3, "buildId" : "5FAABA77B1848347CEC4B0CE7B31811D7D00D2FA" }, { "b" : "7FD292356000", "path" : "/lib64/libgcc_s.so.1", "elfType" : 3, "buildId" : "361D73E3AA2ACE6AF32B03D1B74A22E1FF68AB2D" }, { "b" : "7FD29213A000", "path" : "/lib64/libpthread.so.0", "elfType" : 3, "buildId" : "B8FBCA68CA56E79556BF7884DACF89504096ADEB" }, { "b" : "7FD291D77000", "path" : "/lib64/libc.so.6", "elfType" : 3, "buildId" : "C3F28802314AF4EE866BF8D2E1B506B7BBF34CF6" }, { "b" : "7FD29334D000", "path" : "/lib64/ld-linux-x86-64.so.2", "elfType" : 3, "buildId" : "962B8EEE329A2C57184AF2780756ED2035DEAAC0" }, { "b" : "7FD291B2A000", "path" : "/lib64/libgssapi_krb5.so.2", "elfType" : 3, "buildId" : "DA322D74F55A0C4293085371A8D0E94B5962F5E7" }, { "b" : "7FD291842000", "path" : "/lib64/libkrb5.so.3", "elfType" : 3, "buildId" : "B69E63024D408E400401EEA6815317BDA38FB7C2" }, { "b" : "7FD29163E000", "path" : "/lib64/libcom_err.so.2", "elfType" : 3, "buildId" : "A3832734347DCA522438308C9F08F45524C65C9B" }, { "b" : "7FD29140B000", "path" : "/lib64/libk5crypto.so.3", "elfType" : 3, "buildId" : "A48639BF901DB554479BFAD114CB354CF63D7D6E" }, { "b" : "7FD2911F5000", "path" : "/lib64/libz.so.1", "elfType" : 3, "buildId" : "EA8E45DC8E395CC5E26890470112D97A1F1E0B65" }, { "b" : "7FD290FE7000", "path" : "/lib64/libkrb5support.so.0", "elfType" : 3, "buildId" : "6FDF5B013FD2739D304CFB9D723DCBC149EE03C9" }, { "b" : "7FD290DE3000", "path" : "/lib64/libkeyutils.so.1", "elfType" : 3, "buildId" : "2E01D5AC08C1280D013AAB96B292AC58BC30A263" }, { "b" : "7FD290BC9000", "path" : "/lib64/libresolv.so.2", "elfType" : 3, "buildId" : "FF4E72F4E574E143330FB3C66DB51613B0EC65EA" }, { "b" : "7FD2909A2000", "path" : "/lib64/libselinux.so.1", "elfType" : 3, "buildId" : "A88379F56A51950A33198890D37F5F8AEE71F8B4" }, { "b" : "7FD290740000", "path" : "/lib64/libpcre.so.1", "elfType" : 3, "buildId" : "9CA3D11F018BEEB719CDB34BE800BF1641350D0A" } ] }}
+ mongod(_ZN5mongo15printStackTraceERSo+0x41) [0x561291dbb6b1]
+ mongod(+0x15778C9) [0x561291dba8c9]
+ mongod(+0x1577DAD) [0x561291dbadad]
+ libpthread.so.0(+0xF5E0) [0x7fd2921495e0]
+ libc.so.6(gsignal+0x37) [0x7fd291dac1f7]
+ libc.so.6(abort+0x148) [0x7fd291dad8e8]
+ mongod(_ZN5mongo32fassertFailedNoTraceWithLocationEiPKcj+0x0) [0x56129105f267]
+ mongod(_ZN5mongo17wtRCToStatus_slowEiPKc+0x396) [0x561291acc3c6]
+ mongod(_ZN5mongo22WiredTigerSessionCache16waitUntilDurableEb+0x674) [0x561291ac68a4]
+ mongod(_ZN5mongo18WiredTigerKVEngine24WiredTigerJournalFlusher3runEv+0x11C) [0x561291ab1efc]
+ mongod(_ZN5mongo13BackgroundJob7jobBodyEv+0x131) [0x561291d2d5a1]
+ mongod(+0x1FEFD40) [0x561292832d40]
+ libpthread.so.0(+0x7E25) [0x7fd292141e25]
+ libc.so.6(clone+0x6D) [0x7fd291e6f34d]
+-----  END BACKTRACE  -----
+2017-12-06T17:57:02.080+0000 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-12-06T17:57:02.106+0000 I CONTROL  [initandlisten] MongoDB starting : pid=8 port=27019 dbpath=/data/27019/data 64-bit host=fc5a39fd8132
+2017-12-06T17:57:02.106+0000 I CONTROL  [initandlisten] db version v3.4.10
+2017-12-06T17:57:02.106+0000 I CONTROL  [initandlisten] git version: 078f28920cb24de0dd479b5ea6c66c644f6326e9
+2017-12-06T17:57:02.106+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1e-fips 11 Feb 2013
+2017-12-06T17:57:02.106+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten] modules: none
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten] build environment:
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten]     distmod: rhel70
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-12-06T17:57:02.107+0000 I CONTROL  [initandlisten] options: { config: "/conf/27019.conf", net: { http: { enabled: false }, maxIncomingConnections: 300, port: 27019 }, processManagement: { fork: true, pidFilePath: "/data/27019/logs/mongod.pid" }, replication: { replSet: "rs" }, storage: { dbPath: "/data/27019/data" }, systemLog: { destination: "file", logAppend: true, path: "/data/27019/logs/mongod.log" } }
+2017-12-06T17:57:02.108+0000 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/27019/data not found., terminating
+2017-12-06T17:57:02.108+0000 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-12-06T17:57:02.109+0000 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-12-06T17:57:02.109+0000 I CONTROL  [initandlisten] now exiting
+2017-12-06T17:57:02.109+0000 I CONTROL  [initandlisten] shutting down with code:100
+2017-12-06T17:57:18.510+0000 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-12-06T17:57:18.534+0000 I CONTROL  [initandlisten] MongoDB starting : pid=8 port=27019 dbpath=/data/27019/data 64-bit host=d217dcccbf1b
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] db version v3.4.10
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] git version: 078f28920cb24de0dd479b5ea6c66c644f6326e9
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1e-fips 11 Feb 2013
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] modules: none
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten] build environment:
+2017-12-06T17:57:18.535+0000 I CONTROL  [initandlisten]     distmod: rhel70
+2017-12-06T17:57:18.536+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2017-12-06T17:57:18.536+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-12-06T17:57:18.536+0000 I CONTROL  [initandlisten] options: { config: "/conf/27019.conf", net: { http: { enabled: false }, maxIncomingConnections: 300, port: 27019 }, processManagement: { fork: true, pidFilePath: "/data/27019/logs/mongod.pid" }, replication: { replSet: "rs" }, storage: { dbPath: "/data/27019/data" }, systemLog: { destination: "file", logAppend: true, path: "/data/27019/logs/mongod.log" } }
+2017-12-06T17:57:18.536+0000 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/27019/data not found., terminating
+2017-12-06T17:57:18.537+0000 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-12-06T17:57:18.537+0000 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-12-06T17:57:18.537+0000 I CONTROL  [initandlisten] now exiting
+2017-12-06T17:57:18.537+0000 I CONTROL  [initandlisten] shutting down with code:100
