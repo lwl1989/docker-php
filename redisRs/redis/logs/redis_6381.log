@@ -1,0 +1,65 @@
+9:C 08 Dec 08:40:17.941 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+9:C 08 Dec 08:40:17.942 # Redis version=4.0.2, bits=64, commit=00000000, modified=0, pid=9, just started
+9:C 08 Dec 08:40:17.944 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 4.0.2 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6381
+ |    `-._   `._    /     _.-'    |     PID: 13
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+13:S 08 Dec 08:40:17.951 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+13:S 08 Dec 08:40:17.967 # Server initialized
+13:S 08 Dec 08:40:17.969 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+13:S 08 Dec 08:40:17.972 * Ready to accept connections
+13:S 08 Dec 08:40:17.974 * Connecting to MASTER 0.0.0.0:6381
+13:S 08 Dec 08:40:17.976 * MASTER <-> SLAVE sync started
+13:S 08 Dec 08:40:17.978 * Non blocking connect for SYNC fired the event.
+13:S 08 Dec 08:40:17.981 * Master replied to PING, replication can continue...
+13:S 08 Dec 08:40:17.988 * Partial resynchronization not possible (no cached master)
+13:S 08 Dec 08:40:17.990 # Unexpected reply to PSYNC from master: -MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:17.992 * Retrying with SYNC...
+13:S 08 Dec 08:40:17.995 # MASTER aborted replication with an error: MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:18.990 * Connecting to MASTER 0.0.0.0:6381
+13:S 08 Dec 08:40:18.992 * MASTER <-> SLAVE sync started
+13:S 08 Dec 08:40:18.998 * Non blocking connect for SYNC fired the event.
+13:S 08 Dec 08:40:19.002 * Master replied to PING, replication can continue...
+13:S 08 Dec 08:40:19.003 * Partial resynchronization not possible (no cached master)
+13:S 08 Dec 08:40:19.004 # Unexpected reply to PSYNC from master: -MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:19.005 * Retrying with SYNC...
+13:S 08 Dec 08:40:19.007 # MASTER aborted replication with an error: MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:20.010 * Connecting to MASTER 0.0.0.0:6381
+13:S 08 Dec 08:40:20.013 * MASTER <-> SLAVE sync started
+13:S 08 Dec 08:40:20.030 * Non blocking connect for SYNC fired the event.
+13:S 08 Dec 08:40:20.034 * Master replied to PING, replication can continue...
+13:S 08 Dec 08:40:20.036 * Partial resynchronization not possible (no cached master)
+13:S 08 Dec 08:40:20.039 # Unexpected reply to PSYNC from master: -MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:20.040 * Retrying with SYNC...
+13:S 08 Dec 08:40:20.043 # MASTER aborted replication with an error: MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:21.029 * Connecting to MASTER 0.0.0.0:6381
+13:S 08 Dec 08:40:21.030 * MASTER <-> SLAVE sync started
+13:S 08 Dec 08:40:21.032 * Non blocking connect for SYNC fired the event.
+13:S 08 Dec 08:40:21.034 * Master replied to PING, replication can continue...
+13:S 08 Dec 08:40:21.035 * Partial resynchronization not possible (no cached master)
+13:S 08 Dec 08:40:21.036 # Unexpected reply to PSYNC from master: -MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:21.037 * Retrying with SYNC...
+13:S 08 Dec 08:40:21.039 # MASTER aborted replication with an error: MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:22.046 * Connecting to MASTER 0.0.0.0:6381
+13:S 08 Dec 08:40:22.049 * MASTER <-> SLAVE sync started
+13:S 08 Dec 08:40:22.056 * Non blocking connect for SYNC fired the event.
+13:S 08 Dec 08:40:22.059 * Master replied to PING, replication can continue...
+13:S 08 Dec 08:40:22.062 * Partial resynchronization not possible (no cached master)
+13:S 08 Dec 08:40:22.064 # Unexpected reply to PSYNC from master: -MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
+13:S 08 Dec 08:40:22.066 * Retrying with SYNC...
+13:S 08 Dec 08:40:22.068 # MASTER aborted replication with an error: MASTERDOWN Link with MASTER is down and slave-serve-stale-data is set to 'no'.
